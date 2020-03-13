@@ -16,7 +16,7 @@ def parse_time(t):
 
 def parse_time_and_day(t):
 	t = datetime.fromtimestamp(t)
-	l = t.strftime('%D %H:%M:%S')
+	l = t.strftime('%m/%d %H:%M:%S')
 	return l
 
 def create_connection(db_file):
@@ -234,6 +234,11 @@ def read_template_and_write_html(data_to_input):
 		os.remove(file)
 
 	#
+
+file = glob.glob('../*html')
+if (len(file) > 1):
+	os.remove(file[1])
+	file = file[0]
 
 v_format_time = np.vectorize(parse_time)
 v_parse_time_and_day = np.vectorize(parse_time_and_day)

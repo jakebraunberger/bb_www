@@ -136,7 +136,7 @@
           <th> Error </th>
           <th> Value </th>
         </tr>
-          <tr><td>02/26/20 08:34:48</td><td>StartUp</td><td>0.0</td></tr><tr><td>02/26/20 08:35:55</td><td>StartUp</td><td>0.0</td></tr><tr><td>02/26/20 09:16:30</td><td>StartUp</td><td>0.0</td></tr><tr><td>02/26/20 09:27:13</td><td>StartUp</td><td>0.0</td></tr><tr><td>02/26/20 09:42:17</td><td>StartUp</td><td>0.0</td></tr><tr><td>02/26/20 10:33:38</td><td>StartUp</td><td>0.0</td></tr><tr><td>02/26/20 10:34:47</td><td>StartUp</td><td>0.0</td></tr><tr><td>02/26/20 10:36:07</td><td>StartUp</td><td>0.0</td></tr><tr><td>02/26/20 10:42:01</td><td>StartUp</td><td>0.0</td></tr><tr><td>02/26/20 10:52:20</td><td>StartUp</td><td>0.0</td></tr><tr><td>02/26/20 11:33:02</td><td>StartUp</td><td>0.0</td></tr><tr><td>02/26/20 14:17:32</td><td>StartUp</td><td>0.0</td></tr><tr><td>02/26/20 15:17:52</td><td>StartUp</td><td>0.0</td></tr><tr><td>02/26/20 15:55:45</td><td>StartUp</td><td>0.0</td></tr><tr><td>02/27/20 09:50:01</td><td>StartUp</td><td>0.0</td></tr><tr><td>02/27/20 10:41:42</td><td>StartUp</td><td>0.0</td></tr><tr><td>02/27/20 10:46:10</td><td>StartUp</td><td>0.0</td></tr><tr><td>02/27/20 11:00:03</td><td>StartUp</td><td>0.0</td></tr><tr><td>02/27/20 11:02:55</td><td>StartUp</td><td>0.0</td></tr><tr><td>02/27/20 11:07:56</td><td>StartUp</td><td>0.0</td></tr><tr><td>02/27/20 11:08:03</td><td>CCARRFLT</td><td>12.0</td></tr><tr><td>02/27/20 11:08:03</td><td>MCCCOMMERR</td><td>3.0</td></tr><tr><td>03/04/20 12:58:48</td><td>StartUp</td><td>0.0</td></tr><tr><td>03/04/20 13:00:53</td><td>StartUp</td><td>0.0</td></tr>
+          <tr><td>02/26 08:34:48</td><td>StartUp</td><td>0.0</td></tr><tr><td>02/26 08:35:55</td><td>StartUp</td><td>0.0</td></tr><tr><td>02/26 09:16:30</td><td>StartUp</td><td>0.0</td></tr><tr><td>02/26 09:27:13</td><td>StartUp</td><td>0.0</td></tr><tr><td>02/26 09:42:17</td><td>StartUp</td><td>0.0</td></tr><tr><td>02/26 10:33:38</td><td>StartUp</td><td>0.0</td></tr><tr><td>02/26 10:34:47</td><td>StartUp</td><td>0.0</td></tr><tr><td>02/26 10:36:07</td><td>StartUp</td><td>0.0</td></tr><tr><td>02/26 10:42:01</td><td>StartUp</td><td>0.0</td></tr><tr><td>02/26 10:52:20</td><td>StartUp</td><td>0.0</td></tr><tr><td>02/26 11:33:02</td><td>StartUp</td><td>0.0</td></tr><tr><td>02/26 14:17:32</td><td>StartUp</td><td>0.0</td></tr><tr><td>02/26 15:17:52</td><td>StartUp</td><td>0.0</td></tr><tr><td>02/26 15:55:45</td><td>StartUp</td><td>0.0</td></tr><tr><td>02/27 09:50:01</td><td>StartUp</td><td>0.0</td></tr><tr><td>02/27 10:41:42</td><td>StartUp</td><td>0.0</td></tr><tr><td>02/27 10:46:10</td><td>StartUp</td><td>0.0</td></tr><tr><td>02/27 11:00:03</td><td>StartUp</td><td>0.0</td></tr><tr><td>02/27 11:02:55</td><td>StartUp</td><td>0.0</td></tr><tr><td>02/27 11:07:56</td><td>StartUp</td><td>0.0</td></tr><tr><td>02/27 11:08:03</td><td>CCARRFLT</td><td>12.0</td></tr><tr><td>02/27 11:08:03</td><td>MCCCOMMERR</td><td>3.0</td></tr><tr><td>03/04 12:58:48</td><td>StartUp</td><td>0.0</td></tr><tr><td>03/04 13:00:53</td><td>StartUp</td><td>0.0</td></tr>
         
         
         <!-- todo: set on in Node.js, Socket.io -->
@@ -205,9 +205,13 @@
         datasets: [{ 
             data: [1.0, 1.414213562, 1.732050808, 2.0, 2.236067977, 2.449489743, 2.645751311, 2.828427125, 3.0, 3.16227766, 3.31662479, 3.464101615, 3.605551275, 3.741657387, 3.872983346, 4.0, 4.123105626, 4.242640687, 4.358898944, 4.472135955, 4.582575695, 4.69041576, 4.795831523, 4.898979486, 5.0, 5.099019514, 5.196152423, 5.291502622, 5.385164807, 5.477225575, 5.567764363, 5.656854249, 5.744562647, 5.830951895],
             label: "Battery Voltage",
-            borderColor: "#3e95cd",
-            cubicInterpolation: 'default',
-            fill: false
+            fillColor: "rgba(151,187,205,0.2)",
+            strokeColor: "rgba(151,187,205,1)",
+            pointColor: "rgba(151,187,205,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(151,187,205,1)",
+            fill: true
           }
         ]
       },
@@ -222,9 +226,13 @@
         datasets: [{ 
             data: [1.0, 1.414213562, 1.732050808, 2.0, 2.236067977, 2.449489743, 2.645751311, 2.828427125, 3.0, 3.16227766, 3.31662479, 3.464101615, 3.605551275, 3.741657387, 3.872983346, 4.0, 4.123105626, 4.242640687, 4.358898944, 4.472135955, 4.582575695, 4.69041576, 4.795831523, 4.898979486, 5.0, 5.099019514, 5.196152423, 5.291502622, 5.385164807, 5.477225575, 5.567764363, 5.656854249, 5.744562647, 5.830951895],
             label: "Array Voltage",
-            borderColor: "#3e95cd",
-            cubicInterpolation: 'default',
-            fill: false
+            fillColor: "rgba(151,187,205,0.2)",
+            strokeColor: "rgba(151,187,205,1)",
+            pointColor: "rgba(151,187,205,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(151,187,205,1)",
+            fill: true
           }
         ]
       },
@@ -240,9 +248,13 @@
         datasets: [{ 
             data: [1.0, 1.414213562, 1.732050808, 2.0, 2.236067977, 2.449489743, 2.645751311, 2.828427125, 3.0, 3.16227766, 3.31662479, 3.464101615, 3.605551275, 3.741657387, 3.872983346, 4.0, 4.123105626, 4.242640687, 4.358898944, 4.472135955, 4.582575695, 4.69041576, 4.795831523, 4.898979486, 5.0, 5.099019514, 5.196152423, 5.291502622, 5.385164807, 5.477225575, 5.567764363, 5.656854249, 5.744562647, 5.830951895],
             label: "Load Voltage",
-            borderColor: "#3e95cd",
-            cubicInterpolation: 'default',
-            fill: false
+            fillColor: "rgba(151,187,205,0.2)",
+            strokeColor: "rgba(151,187,205,1)",
+            pointColor: "rgba(151,187,205,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(151,187,205,1)",
+            fill: true
           }
         ]
       },
@@ -259,7 +271,7 @@
             label: "Charge Current",
             borderColor: "#3e95cd",
             cubicInterpolation: 'default',
-            fill: false
+            fill: true
           }
         ]
       },
@@ -276,7 +288,7 @@
             label: "Load Current",
             borderColor: "#3e95cd",
             cubicInterpolation: 'default',
-            fill: false
+            fill: true
           }
         ]
       },
