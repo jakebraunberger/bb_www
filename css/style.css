@@ -34,9 +34,23 @@ body {font-family: Arial;}
 .tabcontent {
   display: none;
   padding: 14px 16px;
-  border: 1px solid #ccc;
+  border-style: none;
   border-top: none;
-  float: left;
+  margin: 1px auto;
+  width: 70%;
+  height: 40vh;
+
+}
+
+/* Style the tab content table */
+.tabcontent-table {
+  display: none;
+  padding-left: 0px;
+  padding-top: 12px;
+  border-style: none;
+  border-top: none;
+  margin: auto;
+  width: 100%;
 }
 
 
@@ -46,11 +60,12 @@ body {font-family: Arial;}
   border-collapse: collapse;
   overflow: hidden;
   border: 1px;
+  margin: auto;
 }
 
 .table td, .table th {
   border: 1px solid #ddd;
-  padding: 14px 16px;
+  padding: 4px 9px;
 }
 
 .table tr:nth-child(even){background-color: #f2f2f2;}
@@ -58,8 +73,8 @@ body {font-family: Arial;}
 .table tr:hover {background-color: #ddd;}
 
 .table th {
-  padding-top: 8px;
-  padding-bottom: 8px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   text-align: left;
   background-color: #4C0050;
   color: white;
@@ -69,5 +84,5 @@ canvas {
       -moz-user-select: none;
       -webkit-user-select: none;
       -ms-user-select: none;
-      width:50%;
+      width:100%;
     }

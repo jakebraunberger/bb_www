@@ -5,7 +5,19 @@ from os import listdir
 import os
 import glob
 import numpy as np
+import time
+from datetime import datetime
 
+
+def parse_time(t):
+	t = datetime.fromtimestamp(t)
+	l = t.strftime('%H:%M:%S')
+	return l
+
+def parse_time_and_day(t):
+	t = datetime.fromtimestamp(t)
+	l = t.strftime('%D %H:%M:%S')
+	return l
 
 def create_connection(db_file):
     """ create a database connection to the SQLite database
@@ -66,17 +78,42 @@ def update_current_charts(txt):
 	# cc3:charge_current,cc4:load_current
 	rows = np.array(select_cols_from_table(conn, 'display', 'time,cc3,cc4'))
 	
-	time = str(rows[:,0].tolist())
+	t = v_format_time(rows[:,0])
+	t = t.tolist()
+	t = str(t)
 	charge_current_data = str(rows[:,1].tolist())
 	load_current_data = str(rows[:,2].tolist())
 
 	# need to replace the html text
-	txt = txt.replace('__current_time__', time)
+	txt = txt.replace('__current_time__', t)
 	txt = txt.replace('__charge_current_data__', charge_current_data)
 	txt = txt.replace('__load_current_data__', load_current_data)
 
 	return txt
 
+def update_errors(txt):
+	conn = create_connection('../databases/errorlogs.db')
+
+	# need to query the columns and time
+	# cc3:charge_current,cc4:load_current
+	rows = np.array(select_cols_from_table(conn, 'errorlogs', '*'))
+	t = v_parse_time_and_day(np.array(rows[:,0], dtype=float))
+	t = t.tolist()
+	# time = time
+
+	# for each row in rows
+	#. html
+	html = ''
+	i = 0
+	for row in rows:
+		html += '<tr>'
+		html += '<td>' + str(t[i]) + '</td>'
+		html += '<td>' + str(row[1]) + '</td>'
+		html += '<td>' + str(row[2]) + '</td>'
+		html += '</tr>'
+		i += 1
+	txt = txt.replace('__error_log_data__', html)	
+	return txt
 
 def update_voltage_charts(txt):
 	# three different current charts
@@ -86,13 +123,15 @@ def update_voltage_charts(txt):
 	# cc0:battery_voltage, cc1:array_voltage, cc2:load_voltage
 	rows = np.array(select_cols_from_table(conn, 'display', 'time,cc0,cc1,cc2'))
 	
-	time = str(rows[:,0].tolist())
+	t = v_format_time(rows[:,0])
+	t = t.tolist()
+	t = str(t)
 	battery_voltage_data = str(rows[:,1].tolist())
 	array_voltage_data = str(rows[:,2].tolist())
 	load_voltage_data = str(rows[:,3].tolist())
 
 	# need to replace the html text
-	txt = txt.replace('__voltage_time__', time)
+	txt = txt.replace('__voltage_time__', t)
 	txt = txt.replace('__battery_voltage_data__', battery_voltage_data)
 	txt = txt.replace('__array_voltage_data__', array_voltage_data)
 	txt = txt.replace('__load_voltage_data__', load_voltage_data)
@@ -175,6 +214,9 @@ def read_template_and_write_html(data_to_input):
 	# need to update the current charts
 	out_text = update_current_charts(out_text)
 
+	# need to update the error log
+	out_text = update_errors(out_text)
+
 
 
 
@@ -193,6 +235,8 @@ def read_template_and_write_html(data_to_input):
 
 	#
 
+v_format_time = np.vectorize(parse_time)
+v_parse_time_and_day = np.vectorize(parse_time_and_day)
 
 # need to get the data
 # first open the database
