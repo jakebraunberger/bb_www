@@ -72,7 +72,7 @@ def get_status_desc(val):
 
 def update_current_charts(txt):
 	# two different current charts
-	conn = create_connection('../databases/display.db')
+	conn = create_connection('/home/ee/bb_www/databases/display.db')
 
 	# need to query the columns and time
 	# cc3:charge_current,cc4:load_current
@@ -92,7 +92,7 @@ def update_current_charts(txt):
 	return txt
 
 def update_errors(txt):
-	conn = create_connection('../databases/errorlogs.db')
+	conn = create_connection('/home/ee/bb_www/databases/errorlogs.db')
 
 	# need to query the columns and time
 	# cc3:charge_current,cc4:load_current
@@ -117,7 +117,7 @@ def update_errors(txt):
 
 def update_voltage_charts(txt):
 	# three different current charts
-	conn = create_connection('../databases/display.db')
+	conn = create_connection('/home/ee/bb_www/databases/display.db')
 
 	# need to query the columns and time
 	# cc0:battery_voltage, cc1:array_voltage, cc2:load_voltage
@@ -141,10 +141,10 @@ def update_voltage_charts(txt):
 def read_template_and_write_html(data_to_input):
 	# get the file to delete after generating the new
 	#.  html file
-	file = glob.glob('../*html')
+	file = glob.glob('/home/ee/bb_www/*html')
 	if (len(file) != 0):
 		file = file[0]
-	fi = open('../template/index.html', 'r')
+	fi = open('/home/ee/bb_www/template/index.html', 'r')
 	template_txt = fi.read()
 	fi.close()
 
@@ -224,7 +224,7 @@ def read_template_and_write_html(data_to_input):
 
 	# write the data to a new html file
 	fo_name = str(uuid.uuid4()) # get random filename
-	fo = open('../%s.html' % fo_name, 'w')
+	fo = open('/home/ee/bb_www/%s.html' % fo_name, 'w')
 	fo.write(out_text)
 	fo.close()
 
@@ -235,7 +235,7 @@ def read_template_and_write_html(data_to_input):
 
 	#
 
-file = glob.glob('../*html')
+file = glob.glob('/home/ee/bb_www/*html')
 if (len(file) > 1):
 	os.remove(file[1])
 	file = file[0]
@@ -245,7 +245,7 @@ v_parse_time_and_day = np.vectorize(parse_time_and_day)
 
 # need to get the data
 # first open the database
-conn = create_connection('../databases/display.db')
+conn = create_connection('/home/ee/bb_www/databases/display.db')
 
 # then get the current status, etc.
 rows = select_cols_from_table(conn, 'display', '*')
