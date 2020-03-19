@@ -42,7 +42,7 @@ def select_all_from_table(conn, table):
     """
     cur = conn.cursor()
     try:
-        cur.execute("SELECT * FROM " + table + " ORDER BY time ASC")
+        cur.execute("SELECT * FROM " + table + " ORDER BY time DESC")
     except:
         cur.execute("SELECT * FROM " + table)
     rows = cur.fetchall()
@@ -58,7 +58,7 @@ def select_cols_from_table(conn, table, cols='*'):
     """
     cur = conn.cursor()
     try:
-        cur.execute("SELECT %s FROM %s ORDER BY time ASC" % (cols, table))
+        cur.execute("SELECT %s FROM %s ORDER BY time DESC" % (cols, table))
     except:
         print('Could not get the requested data.')
     rows = cur.fetchall()
