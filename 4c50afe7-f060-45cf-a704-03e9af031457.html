@@ -1,0 +1,320 @@
+<!doctype html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BB</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+  </head>
+
+
+
+
+  <body>
+    
+    <!-- Tab links -->
+    <div class="tab">
+      <button class="tablinks" onclick="openTab(event, 'Status')">Info</button>
+      <button class="tablinks" onclick="openTab(event, 'Voltages')">Voltage</button>
+      <button class="tablinks" onclick="openTab(event, 'Currents')">Current</button>
+      <button class="tablinks" onclick="openTab(event, 'Error Log')">Errors</button>
+    </div>
+
+
+
+
+    <!-- Tab content -->
+    <!-- Status -->
+    <div id="Status" class="tabcontent-table">
+      <table id="status-table" class="table">
+          <tr> 
+            <th> Name </th>
+            <th> Value </th>
+          </tr>
+          <tr>
+            <td> Status </td>
+            <td> 0 </td>
+          </tr>
+          <tr>
+            <td> Battery Voltage </td>
+            <td> 12.8723144531 </td>
+          </tr>
+          <tr>
+            <td> Array Voltage </td>
+            <td> 13.4552001953 </td>
+          </tr>
+          <tr>
+            <td> Load Voltage </td>
+            <td> 12.8448486328 </td>
+          </tr>
+          <tr>
+            <td> Charge Current </td>
+            <td> 0.444501966238 </td>
+          </tr>
+          <tr>
+            <td> Load Current (A) </td>
+            <td> 0.359949946404 </td>
+          </tr>
+          <tr>
+            <td> Charge (W) </td>
+            <td> 5.75255584717 </td>
+          </tr>
+          <tr>
+            <td> Daily Ah Charge </td>
+            <td> 0.0 </td>
+          </tr>
+          <tr>
+            <td> Daily Ah Load </td>
+            <td> 0.0 </td>
+          </tr>
+          <tr>
+            <td> Charge (kWh) </td>
+            <td> 0.0 </td>
+          </tr>
+          <tr>
+            <td> Daily Vb Min </td>
+            <td> 12.3199462891 </td>
+          </tr>
+          <tr>
+            <td> Charge State </td>
+            <td> 5.0 </td>
+          </tr>
+          <tr>
+            <td> CC LED State </td>
+            <td> 6.0 </td>
+          </tr>
+          <tr>
+            <td> MCC Firmware </td>
+            <td> 1.0 </td>
+          </tr>
+          <tr>
+            <td> MCC SN </td>
+            <td> 0.0 </td>
+          </tr>
+          <tr>
+            <td> Drive RPM </td>
+            <td> 79.98046875 </td>
+          </tr>
+          <tr>
+            <td> Drive Status </td>
+            <td> 1.0 </td>
+          </tr>
+          <tr>
+            <td> Drive V </td>
+            <td> 36.7649993896 </td>
+          </tr>
+          <tr>
+            <td> Drive Current (mA) </td>
+            <td> 54.0 </td>
+          </tr>
+          <tr>
+            <td> Drive Temperature </td>
+            <td> 80.6 </td>
+          </tr>
+      </table>
+    </div>
+
+    <!-- Voltages -->
+    <div id="Voltages" class="tabcontent">
+      <canvas id="chart-voltage-battery"></canvas>
+      <canvas id="chart-voltage-array"></canvas>
+      <canvas id="chart-voltage-load"></canvas>
+    </div>
+
+    <!-- Currents -->
+    <div id="Currents" class="tabcontent">
+      <canvas id="chart-current-charge"></canvas>
+      <canvas id="chart-current-load"></canvas>
+    </div>
+
+    
+
+    <!-- Error Log -->
+    <div id="Error Log" class="tabcontent-table">
+      <table id="error-table" class="table">
+        <tr>
+          <th> Time </th>
+          <th> Error </th>
+          <th> Value </th>
+        </tr>
+          <tr><td>03/20 09:38:03</td><td>StartUp</td><td>0.0</td></tr><tr><td>03/20 08:45:38</td><td>MCCCOMMERR</td><td>3.0</td></tr><tr><td>03/20 08:43:40</td><td>LowBattV</td><td>10.0</td></tr><tr><td>03/20 08:43:22</td><td>MCCCOMMERR</td><td>3.0</td></tr><tr><td>03/20 08:42:27</td><td>MCCCOMMERR</td><td>3.0</td></tr><tr><td>03/20 08:34:08</td><td>StartUp</td><td>0.0</td></tr><tr><td>03/20 08:23:12</td><td>StartUp</td><td>0.0</td></tr><tr><td>03/19 15:28:09</td><td>StartUp</td><td>0.0</td></tr><tr><td>03/19 14:44:27</td><td>MCCCOMMERR</td><td>3.0</td></tr><tr><td>03/19 14:44:20</td><td>StartUp</td><td>0.0</td></tr><tr><td>03/19 14:43:30</td><td>LowBattV</td><td>10.0</td></tr><tr><td>03/19 14:43:19</td><td>MCCCOMMERR</td><td>3.0</td></tr><tr><td>03/19 14:21:58</td><td>StartUp</td><td>0.0</td></tr><tr><td>03/19 14:21:05</td><td>MCCCOMMERR</td><td>3.0</td></tr><tr><td>03/19 14:05:20</td><td>MCCCOMMERR</td><td>3.0</td></tr><tr><td>03/19 14:05:13</td><td>StartUp</td><td>0.0</td></tr><tr><td>03/19 13:41:04</td><td>StartUp</td><td>0.0</td></tr><tr><td>03/19 13:39:53</td><td>LowBattV</td><td>10.0</td></tr><tr><td>03/19 13:10:01</td><td>StartUp</td><td>0.0</td></tr><tr><td>03/19 13:08:32</td><td>LowBattV</td><td>10.0</td></tr><tr><td>03/19 12:53:30</td><td>MCCCOMMERR</td><td>3.0</td></tr><tr><td>03/19 12:53:24</td><td>StartUp</td><td>0.0</td></tr><tr><td>03/19 11:50:03</td><td>StartUp</td><td>0.0</td></tr><tr><td>03/19 11:11:53</td><td>MCCCOMMERR</td><td>3.0</td></tr><tr><td>03/19 11:11:47</td><td>StartUp</td><td>0.0</td></tr><tr><td>03/19 11:10:48</td><td>MCCCOMMERR</td><td>3.0</td></tr><tr><td>03/19 11:10:41</td><td>StartUp</td><td>0.0</td></tr><tr><td>03/19 09:58:27</td><td>StartUp</td><td>0.0</td></tr><tr><td>03/18 08:42:03</td><td>LowBattV</td><td>10.0</td></tr><tr><td>03/18 08:04:04</td><td>CCLDFLT</td><td>13.0</td></tr><tr><td>03/18 08:03:30</td><td>LowBattV</td><td>10.0</td></tr><tr><td>03/18 08:03:16</td><td>StartUp</td><td>0.0</td></tr><tr><td>03/17 14:54:11</td><td>CCLDFLT</td><td>13.0</td></tr><tr><td>03/17 14:54:05</td><td>StartUp</td><td>0.0</td></tr><tr><td>03/17 13:55:37</td><td>CCLDFLT</td><td>13.0</td></tr><tr><td>03/17 13:55:30</td><td>StartUp</td><td>0.0</td></tr><tr><td>03/17 13:52:10</td><td>CCLDFLT</td><td>13.0</td></tr><tr><td>03/17 13:51:57</td><td>StartUp</td><td>0.0</td></tr><tr><td>03/17 13:50:00</td><td>LowBattV</td><td>10.0</td></tr><tr><td>03/17 13:30:31</td><td>CCLDFLT</td><td>13.0</td></tr><tr><td>03/17 13:30:24</td><td>StartUp</td><td>0.0</td></tr><tr><td>03/17 13:11:35</td><td>CCLDFLT</td><td>13.0</td></tr><tr><td>03/17 13:11:28</td><td>StartUp</td><td>0.0</td></tr><tr><td>03/17 12:46:38</td><td>CCLDFLT</td><td>13.0</td></tr><tr><td>03/17 12:46:03</td><td>CCLDFLT</td><td>13.0</td></tr><tr><td>03/17 12:45:56</td><td>StartUp</td><td>0.0</td></tr><tr><td>03/16 14:13:53</td><td>StartUp</td><td>0.0</td></tr><tr><td>03/16 10:38:30</td><td>StartUp</td><td>0.0</td></tr><tr><td>03/16 08:17:42</td><td>StartUp</td><td>0.0</td></tr><tr><td>02/26 15:51:01</td><td>MCCCOMMERR</td><td>3.0</td></tr><tr><td>02/25 12:27:25</td><td>CCALARMLO</td><td>15.0</td></tr><tr><td>02/25 11:53:34</td><td>CCALARMLO</td><td>15.0</td></tr><tr><td>02/25 11:53:32</td><td>CCALARMLO</td><td>15.0</td></tr><tr><td>02/25 11:39:32</td><td>CCALARMLO</td><td>15.0</td></tr><tr><td>02/24 14:05:23</td><td>LowBattV</td><td>10.0</td></tr><tr><td>02/17 12:25:20</td><td>CCALARMLO</td><td>15.0</td></tr><tr><td>02/17 12:25:14</td><td>CCALARMLO</td><td>15.0</td></tr><tr><td>02/17 12:25:12</td><td>CCALARMLO</td><td>15.0</td></tr><tr><td>02/15 11:52:23</td><td>CCALARMLO</td><td>15.0</td></tr><tr><td>02/03 10:48:13</td><td>MCCCOMMERR</td><td>3.0</td></tr><tr><td>02/02 16:22:04</td><td>mtrstll</td><td>32.0</td></tr><tr><td>02/02 16:22:04</td><td>ANTIJAM</td><td>1.0</td></tr><tr><td>02/01 16:21:36</td><td>mtrstll</td><td>32.0</td></tr><tr><td>02/01 16:21:36</td><td>ANTIJAM</td><td>1.0</td></tr><tr><td>01/31 16:21:22</td><td>mtrstll</td><td>32.0</td></tr><tr><td>01/31 16:21:22</td><td>ANTIJAM</td><td>1.0</td></tr><tr><td>01/30 16:21:08</td><td>mtrstll</td><td>32.0</td></tr><tr><td>01/30 16:21:08</td><td>ANTIJAM</td><td>1.0</td></tr><tr><td>01/30 16:15:02</td><td>mtrstll</td><td>32.0</td></tr><tr><td>01/30 16:15:02</td><td>ANTIJAM</td><td>1.0</td></tr><tr><td>01/30 16:08:57</td><td>mtrstll</td><td>32.0</td></tr><tr><td>01/30 16:08:57</td><td>ANTIJAM</td><td>1.0</td></tr><tr><td>01/30 16:02:34</td><td>mtrstll</td><td>32.0</td></tr><tr><td>01/30 16:02:34</td><td>ANTIJAM</td><td>1.0</td></tr><tr><td>01/30 15:56:28</td><td>ANTIJAM</td><td>1.0</td></tr><tr><td>01/30 15:53:09</td><td>MCCCOMMERR</td><td>3.0</td></tr><tr><td>01/30 15:52:30</td><td>MCCCOMMERR</td><td>3.0</td></tr><tr><td>01/30 15:51:52</td><td>MCCCOMMERR</td><td>3.0</td></tr><tr><td>01/30 15:51:20</td><td>MCCCOMMERR</td><td>3.0</td></tr><tr><td>01/30 15:49:45</td><td>MCCCOMMERR</td><td>3.0</td></tr><tr><td>01/30 15:48:51</td><td>MCCCOMMERR</td><td>3.0</td></tr><tr><td>01/30 15:48:24</td><td>StartUp</td><td>0.0</td></tr><tr><td>01/30 15:46:51</td><td>MCCCOMMERR</td><td>3.0</td></tr><tr><td>01/30 10:42:48</td><td>ANTIJAM</td><td>1.0</td></tr><tr><td>01/29 10:42:43</td><td>ANTIJAM</td><td>1.0</td></tr><tr><td>01/28 10:42:38</td><td>ANTIJAM</td><td>1.0</td></tr><tr><td>01/28 10:36:42</td><td>ANTIJAM</td><td>1.0</td></tr><tr><td>01/28 10:30:46</td><td>ANTIJAM</td><td>1.0</td></tr><tr><td>01/28 10:24:49</td><td>ANTIJAM</td><td>1.0</td></tr><tr><td>01/28 10:18:53</td><td>ANTIJAM</td><td>1.0</td></tr><tr><td>01/28 10:12:57</td><td>ANTIJAM</td><td>1.0</td></tr><tr><td>01/28 10:12:29</td><td>MCCCOMMERR</td><td>3.0</td></tr><tr><td>01/24 16:39:54</td><td>MCCCOMMERR</td><td>3.0</td></tr><tr><td>01/24 15:23:23</td><td>ANTIJAM</td><td>1.0</td></tr><tr><td>01/24 15:23:12</td><td>MCCCOMMERR</td><td>3.0</td></tr><tr><td>01/24 15:23:05</td><td>StartUp</td><td>0.0</td></tr><tr><td>01/24 13:13:27</td><td>MCCCOMMERR</td><td>3.0</td></tr><tr><td>01/24 11:29:44</td><td>StartUp</td><td>0.0</td></tr><tr><td>01/24 11:26:52</td><td>StartUp</td><td>0.0</td></tr><tr><td>01/24 11:24:26</td><td>MCCCOMMERR</td><td>3.0</td></tr><tr><td>01/24 10:40:28</td><td>ANTIJAM</td><td>1.0</td></tr><tr><td>01/24 10:34:31</td><td>ANTIJAM</td><td>1.0</td></tr><tr><td>01/24 10:28:35</td><td>ANTIJAM</td><td>1.0</td></tr><tr><td>01/24 10:22:39</td><td>ANTIJAM</td><td>1.0</td></tr><tr><td>01/24 10:16:43</td><td>ANTIJAM</td><td>1.0</td></tr><tr><td>01/23 13:45:00</td><td>MCCCOMMERR</td><td>3.0</td></tr><tr><td>01/23 13:44:53</td><td>StartUp</td><td>0.0</td></tr><tr><td>01/23 13:37:04</td><td>MCCCOMMERR</td><td>3.0</td></tr><tr><td>01/23 13:36:57</td><td>StartUp</td><td>0.0</td></tr><tr><td>01/23 13:20:30</td><td>MCCCOMMERR</td><td>3.0</td></tr><tr><td>01/23 13:20:23</td><td>StartUp</td><td>0.0</td></tr><tr><td>01/23 13:18:00</td><td>MCCCOMMERR</td><td>3.0</td></tr><tr><td>01/23 13:17:53</td><td>StartUp</td><td>0.0</td></tr><tr><td>01/23 12:15:31</td><td>ANTIJAM</td><td>1.0</td></tr><tr><td>01/23 12:14:58</td><td>MCCCOMMERR</td><td>3.0</td></tr><tr><td>01/22 09:59:31</td><td>MCCCOMMERR</td><td>3.0</td></tr><tr><td>01/22 09:05:42</td><td>mtrstll</td><td>32.0</td></tr><tr><td>01/22 09:05:42</td><td>ANTIJAM</td><td>1.0</td></tr><tr><td>01/22 08:59:22</td><td>mtrstll</td><td>32.0</td></tr><tr><td>01/22 08:59:22</td><td>ANTIJAM</td><td>1.0</td></tr><tr><td>01/22 08:53:17</td><td>ANTIJAM</td><td>1.0</td></tr><tr><td>01/22 08:53:16</td><td>mtrstll</td><td>32.0</td></tr><tr><td>01/22 08:47:10</td><td>mtrstll</td><td>32.0</td></tr><tr><td>01/22 08:47:10</td><td>ANTIJAM</td><td>1.0</td></tr><tr><td>01/22 08:40:49</td><td>mtrstll</td><td>32.0</td></tr><tr><td>01/22 08:40:49</td><td>ANTIJAM</td><td>1.0</td></tr><tr><td>01/22 08:34:30</td><td>ANTIJAM</td><td>1.0</td></tr><tr><td>01/22 08:34:24</td><td>MCCCOMMERR</td><td>3.0</td></tr><tr><td>01/22 08:34:17</td><td>StartUp</td><td>0.0</td></tr>
+        
+        
+        <!-- todo: set on in Node.js, Socket.io -->
+      </table>
+    </div>
+
+    
+
+    
+
+
+
+
+    <!-- Script section -->
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <script src="utils.js"></script>
+    <script src="javascript/moment.js"></script>
+
+
+    <!-- Tab things -->
+    <script>
+      function openTab(evt, cityName) {
+        // Declare all variables
+        var i, tabcontent, tablinks, tabcontent2;
+
+        // Get all elements with class="tabcontent" and hide them
+        tabcontent = document.getElementsByClassName("tabcontent");
+        tabcontent2 = document.getElementsByClassName("tabcontent-table");
+        for (i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = "none";
+        }
+        for (i = 0; i < tabcontent2.length; i++) {
+          tabcontent2[i].style.display = "none";
+        }
+
+        // Get all elements with class="tablinks" and remove the class "active"
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+          tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+
+        // Show the current tab, and add an "active" class to the button that opened the tab
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+      }
+    </script>
+
+
+
+    <!-- Dynamic things -->
+    <script>
+    // Get the status in human readable form
+    
+
+    // Chart Voltages
+    var options = {
+        maintainAspectRatio: false,
+        responsive: true,
+        
+    };
+    var ctx_voltages = document.getElementById('chart-voltage-battery').getContext('2d');
+    var myChartVoltages = new Chart(ctx_voltages, {
+        type: 'line',
+        data: {
+        labels: ['09:45:02'],
+        datasets: [{ 
+            data: [12.872314453125],
+            label: "Battery Voltage",
+            fillColor: "rgba(151,187,205,0.2)",
+            strokeColor: "rgba(151,187,205,1)",
+            pointColor: "rgba(151,187,205,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(151,187,205,1)",
+            fill: true
+          }
+        ]
+      },
+      options: options
+    });
+
+    var ctx_voltages_array = document.getElementById('chart-voltage-array').getContext('2d');
+    var myChartVoltageArray = new Chart(ctx_voltages_array, {
+        type: 'line',
+        data: {
+        labels: ['09:45:02'],
+        datasets: [{ 
+            data: [13.4552001953125],
+            label: "Array Voltage",
+            fillColor: "rgba(151,187,205,0.2)",
+            strokeColor: "rgba(151,187,205,1)",
+            pointColor: "rgba(151,187,205,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(151,187,205,1)",
+            fill: true
+          }
+        ]
+      },
+      options: options
+
+    });
+
+    var ctx_voltages_load = document.getElementById('chart-voltage-load').getContext('2d');
+    var myChartVoltageLoad = new Chart(ctx_voltages_load, {
+        type: 'line',
+        data: {
+        labels: ['09:45:02'],
+        datasets: [{ 
+            data: [12.8448486328125],
+            label: "Load Voltage",
+            fillColor: "rgba(151,187,205,0.2)",
+            strokeColor: "rgba(151,187,205,1)",
+            pointColor: "rgba(151,187,205,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(151,187,205,1)",
+            fill: true
+          }
+        ]
+      },
+      options: options
+    });
+
+    var ctx_current_charge = document.getElementById('chart-current-charge').getContext('2d');
+    var myChartCurrentCharge = new Chart(ctx_current_charge, {
+        type: 'line',
+        data: {
+        labels: ['09:45:02'],
+        datasets: [{ 
+            data: [0.44450196623802185],
+            label: "Charge Current",
+            borderColor: "#3e95cd",
+            cubicInterpolation: 'default',
+            fill: true
+          }
+        ]
+      },
+      options: options
+    });
+    
+    var ctx_current_load = document.getElementById('chart-current-load').getContext('2d');
+    var myChartCurrentLoad = new Chart(ctx_current_load, {
+        type: 'line',
+        data: {
+        labels: ['09:45:02'],
+        datasets: [{ 
+            data: [0.3599499464035034],
+            label: "Load Current",
+            borderColor: "#3e95cd",
+            cubicInterpolation: 'default',
+            fill: true
+          }
+        ]
+      },
+      options: options
+    });
+    
+
+
+
+
+
+
+
+
+      
+
+
+
+    </script>
+
+      
+
+      
+     
+      
+    
+  </body>
+</html>
