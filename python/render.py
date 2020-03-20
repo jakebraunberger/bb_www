@@ -20,50 +20,53 @@ def parse_time_and_day(t):
 	return l
 
 def create_connection(db_file):
-    """ create a database connection to the SQLite database
-        specified by the db_file
-    :param db_file: database file
-    :return: Connection object or None
-    """
-    conn = None
-    try:
-        conn = sqlite3.connect(db_file)
-    except:
-        print('Could not open the database')
-        return None       
+	""" create a database connection to the SQLite database
+		specified by the db_file
+	:param db_file: database file
+	:return: Connection object or None
+	"""
+	conn = None
+	try:
+		conn = sqlite3.connect(db_file)
+	except:
+		print('Could not open the database')
+		return None       
  
-    return conn
+	return conn
 
 def select_all_from_table(conn, table):
-    """
-    Query all rows in the tasks table
-    :param conn: the Connection object
-    :return:
-    """
-    cur = conn.cursor()
-    try:
-        cur.execute("SELECT * FROM " + table + " ORDER BY time DESC")
-    except:
-        cur.execute("SELECT * FROM " + table)
-    rows = cur.fetchall()
-    
+	"""
+	Query all rows in the tasks table
+	:param conn: the Connection object
+	:return:
+	"""
+	cur = conn.cursor()
+	try:
+		cur.execute("SELECT * FROM " + table + " ORDER BY time DESC")
+	except:
+		cur.execute("SELECT * FROM " + table)
+	rows = cur.fetchall()
+	
  
-    return rows
+	return rows
 
-def select_cols_from_table(conn, table, cols='*'):
-    """
-    Query all rows in the tasks table
-    :param conn: the Connection object
-    :return:
-    """
-    cur = conn.cursor()
-    try:
-        cur.execute("SELECT %s FROM %s ORDER BY time DESC" % (cols, table))
-    except:
-        print('Could not get the requested data.')
-    rows = cur.fetchall()
+def select_cols_from_table(conn, table, cols='*', limit=-1):
+	"""
+	Query all rows in the tasks table
+	:param conn: the Connection object
+	:return:
+	"""
+	cur = conn.cursor()
+	try:
+		if (limit == -1):
+			cur.execute("SELECT %s FROM %s ORDER BY time DESC" % (cols, table))
+		else:
+			cur.execute("SELECT %s FROM %s ORDER BY time DESC LIMIT %d" % (cols, table, limit))
+	except:
+		print('Could not get the requested data.')
+	rows = cur.fetchall()
  
-    return rows
+	return rows
 
 def get_status_desc(val):
 	return 'Some description.'
@@ -117,11 +120,11 @@ def update_errors(txt):
 
 def update_voltage_charts(txt):
 	# three different current charts
-	conn = create_connection('/home/ee/bb_www/databases/display.db')
+	conn = create_connection('/home/ee/bb_www/databases/ccregisters.db')
 
 	# need to query the columns and time
 	# cc0:battery_voltage, cc1:array_voltage, cc2:load_voltage
-	rows = np.array(select_cols_from_table(conn, 'display', 'time,cc0,cc1,cc2'))
+	rows = np.array(select_cols_from_table(conn, 'ccreg', 'time,reg8,reg9,reg10', limit=10))
 	
 	t = v_format_time(rows[:,0])
 	t = t.tolist()

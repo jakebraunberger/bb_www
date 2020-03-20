@@ -1,0 +1,320 @@
+<!doctype html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BB</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+  </head>
+
+
+
+
+  <body>
+    
+    <!-- Tab links -->
+    <div class="tab">
+      <button class="tablinks" onclick="openTab(event, 'Status')">Info</button>
+      <button class="tablinks" onclick="openTab(event, 'Voltages')">Voltage</button>
+      <button class="tablinks" onclick="openTab(event, 'Currents')">Current</button>
+      <button class="tablinks" onclick="openTab(event, 'Error Log')">Errors</button>
+    </div>
+
+
+
+
+    <!-- Tab content -->
+    <!-- Status -->
+    <div id="Status" class="tabcontent-table">
+      <table id="status-table" class="table">
+          <tr> 
+            <th> Name </th>
+            <th> Value </th>
+          </tr>
+          <tr>
+            <td> Status </td>
+            <td> 10847 </td>
+          </tr>
+          <tr>
+            <td> Battery Voltage </td>
+            <td> 5.830951895 </td>
+          </tr>
+          <tr>
+            <td> Array Voltage </td>
+            <td> 5.830951895 </td>
+          </tr>
+          <tr>
+            <td> Load Voltage </td>
+            <td> 5.830951895 </td>
+          </tr>
+          <tr>
+            <td> Charge Current </td>
+            <td> 5.830951895 </td>
+          </tr>
+          <tr>
+            <td> Load Current (A) </td>
+            <td> 5.830951895 </td>
+          </tr>
+          <tr>
+            <td> Charge (W) </td>
+            <td> 5.830951895 </td>
+          </tr>
+          <tr>
+            <td> Daily Ah Charge </td>
+            <td> 5.830951895 </td>
+          </tr>
+          <tr>
+            <td> Daily Ah Load </td>
+            <td> 40.0 </td>
+          </tr>
+          <tr>
+            <td> Charge (kWh) </td>
+            <td> 41.0 </td>
+          </tr>
+          <tr>
+            <td> Daily Vb Min </td>
+            <td> 42.0 </td>
+          </tr>
+          <tr>
+            <td> Charge State </td>
+            <td> 43.0 </td>
+          </tr>
+          <tr>
+            <td> CC LED State </td>
+            <td> 44.0 </td>
+          </tr>
+          <tr>
+            <td> MCC Firmware </td>
+            <td> 45.0 </td>
+          </tr>
+          <tr>
+            <td> MCC SN </td>
+            <td> 46.0 </td>
+          </tr>
+          <tr>
+            <td> Drive RPM </td>
+            <td> 48.0 </td>
+          </tr>
+          <tr>
+            <td> Drive Status </td>
+            <td> 49.0 </td>
+          </tr>
+          <tr>
+            <td> Drive V </td>
+            <td> 50.0 </td>
+          </tr>
+          <tr>
+            <td> Drive Current (mA) </td>
+            <td> 51.0 </td>
+          </tr>
+          <tr>
+            <td> Drive Temperature </td>
+            <td> 125.6 </td>
+          </tr>
+      </table>
+    </div>
+
+    <!-- Voltages -->
+    <div id="Voltages" class="tabcontent">
+      <canvas id="chart-voltage-battery"></canvas>
+      <canvas id="chart-voltage-array"></canvas>
+      <canvas id="chart-voltage-load"></canvas>
+    </div>
+
+    <!-- Currents -->
+    <div id="Currents" class="tabcontent">
+      <canvas id="chart-current-charge"></canvas>
+      <canvas id="chart-current-load"></canvas>
+    </div>
+
+    
+
+    <!-- Error Log -->
+    <div id="Error Log" class="tabcontent-table">
+      <table id="error-table" class="table">
+        <tr>
+          <th> Time </th>
+          <th> Error </th>
+          <th> Value </th>
+        </tr>
+          <tr><td>02/26 08:34:48</td><td>StartUp</td><td>0.0</td></tr><tr><td>02/26 08:35:55</td><td>StartUp</td><td>0.0</td></tr><tr><td>02/26 09:16:30</td><td>StartUp</td><td>0.0</td></tr><tr><td>02/26 09:27:13</td><td>StartUp</td><td>0.0</td></tr><tr><td>02/26 09:42:17</td><td>StartUp</td><td>0.0</td></tr><tr><td>02/26 10:33:38</td><td>StartUp</td><td>0.0</td></tr><tr><td>02/26 10:34:47</td><td>StartUp</td><td>0.0</td></tr><tr><td>02/26 10:36:07</td><td>StartUp</td><td>0.0</td></tr><tr><td>02/26 10:42:01</td><td>StartUp</td><td>0.0</td></tr><tr><td>02/26 10:52:20</td><td>StartUp</td><td>0.0</td></tr><tr><td>02/26 11:33:02</td><td>StartUp</td><td>0.0</td></tr><tr><td>02/26 14:17:32</td><td>StartUp</td><td>0.0</td></tr><tr><td>02/26 15:17:52</td><td>StartUp</td><td>0.0</td></tr><tr><td>02/26 15:55:45</td><td>StartUp</td><td>0.0</td></tr><tr><td>02/27 09:50:01</td><td>StartUp</td><td>0.0</td></tr><tr><td>02/27 10:41:42</td><td>StartUp</td><td>0.0</td></tr><tr><td>02/27 10:46:10</td><td>StartUp</td><td>0.0</td></tr><tr><td>02/27 11:00:03</td><td>StartUp</td><td>0.0</td></tr><tr><td>02/27 11:02:55</td><td>StartUp</td><td>0.0</td></tr><tr><td>02/27 11:07:56</td><td>StartUp</td><td>0.0</td></tr><tr><td>02/27 11:08:03</td><td>CCARRFLT</td><td>12.0</td></tr><tr><td>02/27 11:08:03</td><td>MCCCOMMERR</td><td>3.0</td></tr><tr><td>03/04 12:58:48</td><td>StartUp</td><td>0.0</td></tr><tr><td>03/04 13:00:53</td><td>StartUp</td><td>0.0</td></tr>
+        
+        
+        <!-- todo: set on in Node.js, Socket.io -->
+      </table>
+    </div>
+
+    
+
+    
+
+
+
+
+    <!-- Script section -->
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <script src="utils.js"></script>
+    <script src="javascript/moment.js"></script>
+
+
+    <!-- Tab things -->
+    <script>
+      function openTab(evt, cityName) {
+        // Declare all variables
+        var i, tabcontent, tablinks, tabcontent2;
+
+        // Get all elements with class="tabcontent" and hide them
+        tabcontent = document.getElementsByClassName("tabcontent");
+        tabcontent2 = document.getElementsByClassName("tabcontent-table");
+        for (i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = "none";
+        }
+        for (i = 0; i < tabcontent2.length; i++) {
+          tabcontent2[i].style.display = "none";
+        }
+
+        // Get all elements with class="tablinks" and remove the class "active"
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+          tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+
+        // Show the current tab, and add an "active" class to the button that opened the tab
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+      }
+    </script>
+
+
+
+    <!-- Dynamic things -->
+    <script>
+    // Get the status in human readable form
+    
+
+    // Chart Voltages
+    var options = {
+        maintainAspectRatio: false,
+        responsive: true,
+        
+    };
+    var ctx_voltages = document.getElementById('chart-voltage-battery').getContext('2d');
+    var myChartVoltages = new Chart(ctx_voltages, {
+        type: 'line',
+        data: {
+        labels: ['14:53:24', '16:16:44', '17:40:04', '19:03:24', '20:26:44', '21:50:04', '23:13:24', '00:36:44', '02:00:04', '03:23:24', '04:46:44', '06:10:04', '07:33:24', '08:56:44', '10:20:04', '11:43:24', '13:06:44', '14:30:04', '15:53:24', '17:16:44', '18:40:04', '20:03:24', '21:26:44', '22:50:04', '00:13:24', '01:36:44', '03:00:04', '04:23:24', '05:46:44', '07:10:04', '08:33:24', '09:56:44', '11:20:04', '12:43:24'],
+        datasets: [{ 
+            data: [1.0, 1.414213562, 1.732050808, 2.0, 2.236067977, 2.449489743, 2.645751311, 2.828427125, 3.0, 3.16227766, 3.31662479, 3.464101615, 3.605551275, 3.741657387, 3.872983346, 4.0, 4.123105626, 4.242640687, 4.358898944, 4.472135955, 4.582575695, 4.69041576, 4.795831523, 4.898979486, 5.0, 5.099019514, 5.196152423, 5.291502622, 5.385164807, 5.477225575, 5.567764363, 5.656854249, 5.744562647, 5.830951895],
+            label: "Battery Voltage",
+            fillColor: "rgba(151,187,205,0.2)",
+            strokeColor: "rgba(151,187,205,1)",
+            pointColor: "rgba(151,187,205,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(151,187,205,1)",
+            fill: true
+          }
+        ]
+      },
+      options: options
+    });
+
+    var ctx_voltages_array = document.getElementById('chart-voltage-array').getContext('2d');
+    var myChartVoltageArray = new Chart(ctx_voltages_array, {
+        type: 'line',
+        data: {
+        labels: ['14:53:24', '16:16:44', '17:40:04', '19:03:24', '20:26:44', '21:50:04', '23:13:24', '00:36:44', '02:00:04', '03:23:24', '04:46:44', '06:10:04', '07:33:24', '08:56:44', '10:20:04', '11:43:24', '13:06:44', '14:30:04', '15:53:24', '17:16:44', '18:40:04', '20:03:24', '21:26:44', '22:50:04', '00:13:24', '01:36:44', '03:00:04', '04:23:24', '05:46:44', '07:10:04', '08:33:24', '09:56:44', '11:20:04', '12:43:24'],
+        datasets: [{ 
+            data: [1.0, 1.414213562, 1.732050808, 2.0, 2.236067977, 2.449489743, 2.645751311, 2.828427125, 3.0, 3.16227766, 3.31662479, 3.464101615, 3.605551275, 3.741657387, 3.872983346, 4.0, 4.123105626, 4.242640687, 4.358898944, 4.472135955, 4.582575695, 4.69041576, 4.795831523, 4.898979486, 5.0, 5.099019514, 5.196152423, 5.291502622, 5.385164807, 5.477225575, 5.567764363, 5.656854249, 5.744562647, 5.830951895],
+            label: "Array Voltage",
+            fillColor: "rgba(151,187,205,0.2)",
+            strokeColor: "rgba(151,187,205,1)",
+            pointColor: "rgba(151,187,205,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(151,187,205,1)",
+            fill: true
+          }
+        ]
+      },
+      options: options
+
+    });
+
+    var ctx_voltages_load = document.getElementById('chart-voltage-load').getContext('2d');
+    var myChartVoltageLoad = new Chart(ctx_voltages_load, {
+        type: 'line',
+        data: {
+        labels: ['14:53:24', '16:16:44', '17:40:04', '19:03:24', '20:26:44', '21:50:04', '23:13:24', '00:36:44', '02:00:04', '03:23:24', '04:46:44', '06:10:04', '07:33:24', '08:56:44', '10:20:04', '11:43:24', '13:06:44', '14:30:04', '15:53:24', '17:16:44', '18:40:04', '20:03:24', '21:26:44', '22:50:04', '00:13:24', '01:36:44', '03:00:04', '04:23:24', '05:46:44', '07:10:04', '08:33:24', '09:56:44', '11:20:04', '12:43:24'],
+        datasets: [{ 
+            data: [1.0, 1.414213562, 1.732050808, 2.0, 2.236067977, 2.449489743, 2.645751311, 2.828427125, 3.0, 3.16227766, 3.31662479, 3.464101615, 3.605551275, 3.741657387, 3.872983346, 4.0, 4.123105626, 4.242640687, 4.358898944, 4.472135955, 4.582575695, 4.69041576, 4.795831523, 4.898979486, 5.0, 5.099019514, 5.196152423, 5.291502622, 5.385164807, 5.477225575, 5.567764363, 5.656854249, 5.744562647, 5.830951895],
+            label: "Load Voltage",
+            fillColor: "rgba(151,187,205,0.2)",
+            strokeColor: "rgba(151,187,205,1)",
+            pointColor: "rgba(151,187,205,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(151,187,205,1)",
+            fill: true
+          }
+        ]
+      },
+      options: options
+    });
+
+    var ctx_current_charge = document.getElementById('chart-current-charge').getContext('2d');
+    var myChartCurrentCharge = new Chart(ctx_current_charge, {
+        type: 'line',
+        data: {
+        labels: ['14:53:24', '16:16:44', '17:40:04', '19:03:24', '20:26:44', '21:50:04', '23:13:24', '00:36:44', '02:00:04', '03:23:24', '04:46:44', '06:10:04', '07:33:24', '08:56:44', '10:20:04', '11:43:24', '13:06:44', '14:30:04', '15:53:24', '17:16:44', '18:40:04', '20:03:24', '21:26:44', '22:50:04', '00:13:24', '01:36:44', '03:00:04', '04:23:24', '05:46:44', '07:10:04', '08:33:24', '09:56:44', '11:20:04', '12:43:24'],
+        datasets: [{ 
+            data: [1.0, 1.414213562, 1.732050808, 2.0, 2.236067977, 2.449489743, 2.645751311, 2.828427125, 3.0, 3.16227766, 3.31662479, 3.464101615, 3.605551275, 3.741657387, 3.872983346, 4.0, 4.123105626, 4.242640687, 4.358898944, 4.472135955, 4.582575695, 4.69041576, 4.795831523, 4.898979486, 5.0, 5.099019514, 5.196152423, 5.291502622, 5.385164807, 5.477225575, 5.567764363, 5.656854249, 5.744562647, 5.830951895],
+            label: "Charge Current",
+            borderColor: "#3e95cd",
+            cubicInterpolation: 'default',
+            fill: true
+          }
+        ]
+      },
+      options: options
+    });
+    
+    var ctx_current_load = document.getElementById('chart-current-load').getContext('2d');
+    var myChartCurrentLoad = new Chart(ctx_current_load, {
+        type: 'line',
+        data: {
+        labels: ['14:53:24', '16:16:44', '17:40:04', '19:03:24', '20:26:44', '21:50:04', '23:13:24', '00:36:44', '02:00:04', '03:23:24', '04:46:44', '06:10:04', '07:33:24', '08:56:44', '10:20:04', '11:43:24', '13:06:44', '14:30:04', '15:53:24', '17:16:44', '18:40:04', '20:03:24', '21:26:44', '22:50:04', '00:13:24', '01:36:44', '03:00:04', '04:23:24', '05:46:44', '07:10:04', '08:33:24', '09:56:44', '11:20:04', '12:43:24'],
+        datasets: [{ 
+            data: [1.0, 1.414213562, 1.732050808, 2.0, 2.236067977, 2.449489743, 2.645751311, 2.828427125, 3.0, 3.16227766, 3.31662479, 3.464101615, 3.605551275, 3.741657387, 3.872983346, 4.0, 4.123105626, 4.242640687, 4.358898944, 4.472135955, 4.582575695, 4.69041576, 4.795831523, 4.898979486, 5.0, 5.099019514, 5.196152423, 5.291502622, 5.385164807, 5.477225575, 5.567764363, 5.656854249, 5.744562647, 5.830951895],
+            label: "Load Current",
+            borderColor: "#3e95cd",
+            cubicInterpolation: 'default',
+            fill: true
+          }
+        ]
+      },
+      options: options
+    });
+    
+
+
+
+
+
+
+
+
+      
+
+
+
+    </script>
+
+      
+
+      
+     
+      
+    
+  </body>
+</html>
