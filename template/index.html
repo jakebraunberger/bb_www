@@ -14,8 +14,7 @@
     <!-- Tab links -->
     <div class="tab">
       <button class="tablinks" onclick="openTab(event, 'Status')">Info</button>
-      <button class="tablinks" onclick="openTab(event, 'Voltages')">Voltage</button>
-      <button class="tablinks" onclick="openTab(event, 'Currents')">Current</button>
+      <button class="tablinks" onclick="openTab(event, 'Charts')">Charts</button>
       <button class="tablinks" onclick="openTab(event, 'Error Log')">Errors</button>
     </div>
 
@@ -114,16 +113,8 @@
     </div>
 
     <!-- Voltages -->
-    <div id="Voltages" class="tabcontent">
-      <canvas id="chart-voltage-battery"></canvas>
-      <canvas id="chart-voltage-array"></canvas>
-      <canvas id="chart-voltage-load"></canvas>
-    </div>
-
-    <!-- Currents -->
-    <div id="Currents" class="tabcontent">
-      <canvas id="chart-current-charge"></canvas>
-      <canvas id="chart-current-load"></canvas>
+    <div id="Charts" class="tabcontent">
+      __chart_generator_canvases__
     </div>
 
     
@@ -186,128 +177,8 @@
     </script>
 
 
-
-    <!-- Dynamic things -->
     <script>
-    // Get the status in human readable form
-    
-
-    // Chart Voltages
-    var options = {
-        maintainAspectRatio: false,
-        responsive: true,
-        
-    };
-    var ctx_voltages = document.getElementById('chart-voltage-battery').getContext('2d');
-    var myChartVoltages = new Chart(ctx_voltages, {
-        type: 'line',
-        data: {
-        labels: __voltage_time__,
-        datasets: [{ 
-            data: __battery_voltage_data__,
-            label: "Battery Voltage",
-            fillColor: "rgba(151,187,205,0.2)",
-            strokeColor: "rgba(151,187,205,1)",
-            pointColor: "rgba(151,187,205,1)",
-            pointStrokeColor: "#fff",
-            pointHighlightFill: "#fff",
-            pointHighlightStroke: "rgba(151,187,205,1)",
-            fill: true
-          }
-        ]
-      },
-      options: options
-    });
-
-    var ctx_voltages_array = document.getElementById('chart-voltage-array').getContext('2d');
-    var myChartVoltageArray = new Chart(ctx_voltages_array, {
-        type: 'line',
-        data: {
-        labels: __voltage_time__,
-        datasets: [{ 
-            data: __array_voltage_data__,
-            label: "Array Voltage",
-            fillColor: "rgba(151,187,205,0.2)",
-            strokeColor: "rgba(151,187,205,1)",
-            pointColor: "rgba(151,187,205,1)",
-            pointStrokeColor: "#fff",
-            pointHighlightFill: "#fff",
-            pointHighlightStroke: "rgba(151,187,205,1)",
-            fill: true
-          }
-        ]
-      },
-      options: options
-
-    });
-
-    var ctx_voltages_load = document.getElementById('chart-voltage-load').getContext('2d');
-    var myChartVoltageLoad = new Chart(ctx_voltages_load, {
-        type: 'line',
-        data: {
-        labels: __voltage_time__,
-        datasets: [{ 
-            data: __load_voltage_data__,
-            label: "Load Voltage",
-            fillColor: "rgba(151,187,205,0.2)",
-            strokeColor: "rgba(151,187,205,1)",
-            pointColor: "rgba(151,187,205,1)",
-            pointStrokeColor: "#fff",
-            pointHighlightFill: "#fff",
-            pointHighlightStroke: "rgba(151,187,205,1)",
-            fill: true
-          }
-        ]
-      },
-      options: options
-    });
-
-    var ctx_current_charge = document.getElementById('chart-current-charge').getContext('2d');
-    var myChartCurrentCharge = new Chart(ctx_current_charge, {
-        type: 'line',
-        data: {
-        labels: __current_time__,
-        datasets: [{ 
-            data: __charge_current_data__,
-            label: "Charge Current",
-            borderColor: "#3e95cd",
-            cubicInterpolation: 'default',
-            fill: true
-          }
-        ]
-      },
-      options: options
-    });
-    
-    var ctx_current_load = document.getElementById('chart-current-load').getContext('2d');
-    var myChartCurrentLoad = new Chart(ctx_current_load, {
-        type: 'line',
-        data: {
-        labels: __current_time__,
-        datasets: [{ 
-            data: __load_current_data__,
-            label: "Load Current",
-            borderColor: "#3e95cd",
-            cubicInterpolation: 'default',
-            fill: true
-          }
-        ]
-      },
-      options: options
-    });
-    
-
-
-
-
-
-
-
-
-      
-
-
-
+      __chart_generator_scripts__
     </script>
 
       
